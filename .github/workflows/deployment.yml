@@ -21,7 +21,7 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     outputs: 
-      script-file: ${{ steps.publish }} #github action expression syntax
+      script-file: ${{ steps.publish.outputs.script-file }} #github action expression syntax
     steps:
       - name: Get Code
         uses: actions/checkout@v3
