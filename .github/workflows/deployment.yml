@@ -39,7 +39,10 @@ jobs:
         uses: actions/cache@v3
         with: 
           path: ~/.npm
-          key: deps-node-modules-${{hashFiles('**/package-lock.json')}}
+          key: ${{ runner.os }}-node-18-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-18-
+            ${{ runner.os }}-
       - name: Install Dependencies
         run: npm ci
       - name: Build website
