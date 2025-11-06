@@ -9,11 +9,16 @@ jobs:
     steps: 
       - name: Get code
         uses: actions/checkout@v3
-      - name: Cache Dependencies
+      - name: Cache npm tarballs
+        id: npm-cache
         uses: actions/cache@v4
-        with:  
+        with:
           path: ~/.npm
-          key: deps-node-modules-${{hashFiles('**-package-lock.json')}} 
+          key: ${{ runner.os }}-node-18-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-18-
+            ${{ runner.os }}-
+      
       - name: Install NodeJS
         uses: actions/setup-node@v3
         with:
