@@ -39,7 +39,7 @@ jobs:
           path: dist
 
   deploy:
-    needs: build # or may be [test, ...]
+    needs: build
     runs-on: ubuntu-latest
     steps: 
       - name: Get code
